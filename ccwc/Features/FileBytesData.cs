@@ -4,7 +4,15 @@ public static class FileBytesData
 {
     public static long GetFileBytes(string fileName)
     {
-        var fi = new FileInfo(fileName);
-        return fi.Length;
+        try
+        {
+            var fi = new FileInfo(fileName);
+            return fi.Length;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("The correct file path was not found");
+            throw;
+        }
     }
 }

@@ -4,7 +4,15 @@ public static class FileLinesData
 {
     public static long GetLinesInFile(string fileName)
     {
-        var fi = new FileInfo(fileName);
-        return File.ReadLines(fi.FullName).Count();
+        try
+        {
+            var fi = new FileInfo(fileName);
+            return File.ReadLines(fi.FullName).Count();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("The correct file path was not found");
+            throw;
+        }
     }
 }
